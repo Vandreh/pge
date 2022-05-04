@@ -252,18 +252,7 @@
 				$compras = $manager->select_common("tb_compras",null,null,null);
 
 				if($compras == false){
-					# Titulos
-					#$table_titles['id_cliente'] = "ID";
-					$table_titles['cliente_name'] = "NOME CLIENTE";
-					$table_titles['countPurchases'] = "NUMERO DE COMPRAS";
-					$table_titles['countPrices'] = "TOTAL R$";
 
-					# Filtro
-					$table_color = "#FF69B4";
-					$table_icon = "plus";
-					$table_header = " Lista das Compras <hr>";
-					# Incluindo a 'THE TABLE'
-					include_once $GLOBALS['project_path']."/views/list_common_premiar.php";
 					#se existir conteúdo, ele cria a tabela
 				}else{
 				
