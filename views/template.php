@@ -100,7 +100,8 @@
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous">
         </script>
-        <!-- Popper.JS -->
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+         Popper.JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -109,6 +110,40 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#tableGeral').DataTable({
+                    "language":{
+                        "sEmptyTable": "Ningun registro encontrado",
+                        "sInfo": "Mostrando de _START_ hasta _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando 0 hasta 0 de 0 registros",
+                        "sInfoFiltered": "(Total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sInfoThousands": ".",
+                        "sLengthMenu": "_MENU_ resultados por página",
+                        "sLoadingRecords": "Cargando...",
+                        "sProcessing": "Procesando...",
+                        "sZeroRecords": "Ningun registro encontrado",
+                        "sSearch": "Buscar",
+                        "oPaginate": {
+                            "sNext": "Próximo",
+                            "sPrevious": "Anterior",
+                            "sFirst": "Primero",
+                            "sLast": "Último"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Ordenar colunas de forma ascendente",
+                            "sSortDescending": ": Ordenar colunas de forma descendente"
+                        },
+                        "select": {
+                            "rows": {
+                                "_": "Seleccionado %d lineas",
+                                "0": "Ninguna linea seleccionada",
+                                "1": "Seleccionado 1 linea"
+                            }
+                        }
+                    }
+                //"fixedHeader": true
+                });
+                $('#tableGeral1').DataTable({
+                    "paging": false,
                     "language":{
                         "sEmptyTable": "Ningun registro encontrado",
                         "sInfo": "Mostrando de _START_ hasta _END_ de _TOTAL_ registros",
@@ -152,7 +187,12 @@
             });
         </script>
   
+        <!-- Scripts para Carrito de Compras
+        <script src="views/carrito/carrito/js/bootstrap.min.js"></script>
+        <script src="views/carrito/carrito/js/jquery-3.3.1.min.js"></script>
+        <script src="views/carrito/carrito/js/popper.min.js"></script>-->
         <script src="views/carrito/carrito/js/jquery-ui.js"></script>
+
         <script src="views/carrito/carrito/js/owl.carousel.min.js"></script>
         <script src="views/carrito/carrito/js/jquery.magnific-popup.min.js"></script>
         <script src="views/carrito/carrito/js/aos.js"></script>
@@ -160,6 +200,19 @@
         
         <script>
             $(document).ready(function(){
+                $(".btnEliminar").click(function(event){
+                    event.preventDefault();
+                    var id = $(this).data('id');
+                    var boton = $(this);
+                    $.ajax({
+                        method:'POST',
+                        url:'./views/carrito/eliminarCarrito.php',
+                        data:{id:id}
+                    }).done(function(respuesta){
+                        boton.parent('td').parent('tr').remove();
+                    });
+                });
+
                 $(".btnEliminarVenta").click(function(event){
                     event.preventDefault();
                     var id = $(this).data('id');
@@ -196,9 +249,33 @@
                         method:'POST',
                         url:'./views/carrito/actualizarCarrito.php',
                         data:{id:id, cantidad:cantidad}
-                    }).done(function(respuesta){});
+                    }).done(function(respuesta){
+                        
+                    });
                 }
+         
+                flete=0, impuesto=0, total=0, suma=0;
+
+                $(".txtFlete").keyup(function(){
+                    flete = $(this).val();
+                    total = $(this).data('total');
+                    sumar(flete, total);
+                });
+                $(".txtImpuesto").keyup(function(){
+                    impuesto = $(this).val();
+                    total = $(this).data('total');
+                    sumar2(impuesto, total);
+                });
+                function sumar(flete, total){
+                    suma = parseFloat(flete) + parseFloat(impuesto) + parseFloat(total);
+                    document.f1.f1t1.value = suma.toFixed(2);
+                }
+                function sumar2(impuesto, total){
+                    suma2 = parseFloat(flete) + parseFloat(impuesto) + parseFloat(total);
+                    document.f1.f1t1.value = suma2.toFixed(2);
+                }            
             });
         </script>
     </body>
+    <?php //validate_success(); ?>
 </html>
