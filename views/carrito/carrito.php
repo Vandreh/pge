@@ -2,6 +2,10 @@
     if(isset($_SESSION['carritoCompra'])){
     $carritoCompra = $_SESSION['carritoCompra'];
     foreach($carritoCompra as $carrito){$cart[] = $carrito['id_producto'];}}
+
+    if($resultado == null) {
+        $resultado = 0;
+    }
 ?>
      
 <!-- SEARCH FORM -->
