@@ -189,7 +189,7 @@
 				
 				# Busca	
 				$manager = new Manager;
-				$table_content = $manager->select_common("tb_clientes",null,$cpf1,null);
+				$table_content = $manager->select_common("tb_clientes",null,null,null);
 				
 				# Titulos
 				#$table_titles['id_cliente'] = "ID";
@@ -336,7 +336,7 @@
 				
 				# Busca	
 				$manager = new Manager;
-				$table_content = $manager->select_common("tb_productos",null,$cpf1,null);
+				$table_content = $manager->select_common("tb_productos",null,null,null);
 				
 				# Titulos
 				#$table_titles['id_producto'] = "ID";
@@ -365,7 +365,7 @@
 			case "manager_productos":
 				# Busca	
 				$manager = new Manager;
-				$table_content = $manager->select_common("tb_productos",null,$cpf1,null);
+				$table_content = $manager->select_common("tb_productos",null,null,null);
 				
 				# Titulos
 				#$table_titles['id_producto'] = "ID";
@@ -467,10 +467,7 @@
 				include_once $GLOBALS['project_path']."/views/forms/update_client.php";
 				
             	# Incluindo os arquivos necessarios
-            	$user = $_SESSION[md5("user_data")];
-            	$cpf = $user['id_user'];
-                $cpf1 = array("cliente_id"=>$cliente_r['id_cliente']);
-            
+            	
                 # Busca	
             	$manager = new Manager;
 				$table_content = $manager->select_common("tb_compras",null,null,null);
