@@ -4,6 +4,9 @@
 	include_once $GLOBALS['project_path']."/models/connect.php";
 	include_once $GLOBALS['project_path']."/models/manager.php";
 
+	$user = $_SESSION[md5("user_data")];
+	$cpf = $user['id_user'];
+
 	function validate_options(){
 	    
 	    //registro_financiero.php
