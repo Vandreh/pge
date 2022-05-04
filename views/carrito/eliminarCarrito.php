@@ -10,7 +10,8 @@
                 
                 'product_name' => $arreglo[$i]['product_name'],
                 'product_description' => $arreglo[$i]['product_description'],
-                'product_price' => $arreglo[$i]['product_price']
+                'product_price' => $arreglo[$i]['product_price'],
+                'cantidad' => $arreglo[$i]['cantidad']
             );
         }
     }
