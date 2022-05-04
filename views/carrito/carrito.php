@@ -3,9 +3,15 @@
     $carritoCompra = $_SESSION['carritoCompra'];
     foreach($carritoCompra as $carrito){$cart[] = $carrito['id_producto'];}}
 
-    if($resultado == false) {
-        $resultado[] = 0;
-    }
+    //Testar se existe conteúdo!
+	#Se não existir, ele mostra a label 
+	if($resultado == false){
+		echo '<button class="btn btn-warning">';
+			 echo ' <i class="fa fa-thumbs-down"></i>';
+			 echo ' No existen resultados';
+		echo '</button><br><br>';
+		#se existir conteúdo, ele cria a tabela
+	}else{
 ?>
      
 <!-- SEARCH FORM -->
