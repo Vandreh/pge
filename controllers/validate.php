@@ -252,7 +252,10 @@
 				$compras = $manager->select_common("tb_compras",null,null,null);
 
 				if($compras == false){
-
+					echo '<button class="btn btn-warning">';
+					echo ' <i class="fa fa-thumbs-down"></i>';
+					echo ' No existen resultados';
+			   		echo '</button><br><br>';
 					#se existir conteúdo, ele cria a tabela
 				}else{
 				
