@@ -3,6 +3,8 @@
     $carritoCompra = $_SESSION['carritoCompra'];
     foreach($carritoCompra as $carrito){$cart[] = $carrito['id_producto'];}}
 
+
+    var_dump($resultado);
     if($resultado == null) {
         $resultado = 0;
     }
