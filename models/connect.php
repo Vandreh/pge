@@ -11,7 +11,7 @@
 		
 		public static function get_instance(){
 			if(!isset(self::$instance)){
-				self::$instance = new PDO("pgsql:host=$host;dbname=$database;', $user, $password);
+				self::$instance = new PDO("pgsql:host=$host;dbname=$database;', $user, $password");
 				self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				self::$instance->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);
 			}
