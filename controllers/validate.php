@@ -401,7 +401,9 @@
 			break;
 			
 			case "update_producto":
-
+				$user = $_SESSION[md5("user_data")];
+				$cpf = $user['id_user'];
+				
 				$filter['id_producto'] = base64_decode($_GET['filter']);
 				$manager = new Manager;
 				$producto_r = $manager->select_common("tb_productos",null,$filter, null);

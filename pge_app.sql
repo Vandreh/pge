@@ -47,7 +47,7 @@ CREATE TABLE tb_productos (
   id_producto SERIAL PRIMARY KEY,
   product_name varchar NOT NULL,
   product_price decimal(11,2) NOT NULL,
-  product_description text,
+  product_description varchar NOT NULL,
   producto_created_in timestamp NULL DEFAULT current_timestamp,
   user_id varchar(30) NOT NULL
 );
