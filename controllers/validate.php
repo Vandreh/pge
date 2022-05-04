@@ -218,7 +218,7 @@
 			case "manager_clients":
 				# Busca	
 				$manager = new Manager;
-				$table_content = $manager->select_common("tb_clientes",null,$cpf1,null);
+				$table_content = $manager->select_common("tb_clientes",null,null,null);
 				
 				# Titulos
 				#$table_titles['id_cliente'] = "ID";
