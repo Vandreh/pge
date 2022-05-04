@@ -250,52 +250,69 @@
 				$clientes = $manager->select_common("tb_clientes",null,null,null);
 				$manager = new Manager;
 				$compras = $manager->select_common("tb_compras",null,null,null);
-				
-				//Criando o array de clientes por ID:
-				$count = [];
-				$name = [];
-				$total = [];
-				foreach ($clientes as $key => $value) {
-					foreach ($value as $k => $v) {
-						if($k == "id_cliente") {
-							$count["cliente_id"] = $v;
-							$name['cliente_name'] = $value['cliente_name'];
-							$total[$key]['countPrices'] = 0;
-							$total[$key][$k] = $count["cliente_id"];
-							$total[$key]["cliente_name"] = $name["cliente_name"];
-							$total[$key]['countPurchases'] = 0;
-						}
-					}	
-				}
 
-				//Inserindo a soma das compras e dos preços das compras:
-				foreach ($compras as $key => $value) {
-					$id = $value['cliente_id'];
-					$precos = $value['precio_compra'];
-					for ($i=0; $i < count($total); $i++) { 
-						if($total[$i]['id_cliente'] == $id) {
-							++$total[$i]['countPurchases'];
-							$total[$i]['countPrices'] += $precos;		
+				if($compras == false){
+					# Titulos
+					#$table_titles['id_cliente'] = "ID";
+					$table_titles['cliente_name'] = "NOME CLIENTE";
+					$table_titles['countPurchases'] = "NUMERO DE COMPRAS";
+					$table_titles['countPrices'] = "TOTAL R$";
+
+					# Filtro
+					$table_color = "#FF69B4";
+					$table_icon = "plus";
+					$table_header = " Lista das Compras <hr>";
+					# Incluindo a 'THE TABLE'
+					include_once $GLOBALS['project_path']."/views/list_common_premiar.php";
+					#se existir conteúdo, ele cria a tabela
+				}else{
+				
+					//Criando o array de clientes por ID:
+					$count = [];
+					$name = [];
+					$total = [];
+					foreach ($clientes as $key => $value) {
+						foreach ($value as $k => $v) {
+							if($k == "id_cliente") {
+								$count["cliente_id"] = $v;
+								$name['cliente_name'] = $value['cliente_name'];
+								$total[$key]['countPrices'] = 0;
+								$total[$key][$k] = $count["cliente_id"];
+								$total[$key]["cliente_name"] = $name["cliente_name"];
+								$total[$key]['countPurchases'] = 0;
+							}
+						}	
+					}
+
+					//Inserindo a soma das compras e dos preços das compras:
+					foreach ($compras as $key => $value) {
+						$id = $value['cliente_id'];
+						$precos = $value['precio_compra'];
+						for ($i=0; $i < count($total); $i++) { 
+							if($total[$i]['id_cliente'] == $id) {
+								++$total[$i]['countPurchases'];
+								$total[$i]['countPrices'] += $precos;		
+							}
 						}
 					}
+					
+					//print_r($total);
+					//Ordenando array pela soma de gastos dos clientes
+					rsort($total);
+
+					# Titulos
+					#$table_titles['id_cliente'] = "ID";
+					$table_titles['cliente_name'] = "NOME CLIENTE";
+					$table_titles['countPurchases'] = "NUMERO DE COMPRAS";
+					$table_titles['countPrices'] = "TOTAL R$";
+
+					# Filtro
+					$table_color = "#FF69B4";
+					$table_icon = "plus";
+					$table_header = " Lista das Compras <hr>";
+					# Incluindo a 'THE TABLE'
+					include_once $GLOBALS['project_path']."/views/list_common_premiar.php";
 				}
-				
-				//print_r($total);
-				//Ordenando array pela soma de gastos dos clientes
-				rsort($total);
-
-				# Titulos
-				#$table_titles['id_cliente'] = "ID";
-				$table_titles['cliente_name'] = "NOME CLIENTE";
-				$table_titles['countPurchases'] = "NUMERO DE COMPRAS";
-				$table_titles['countPrices'] = "TOTAL R$";
-
-				# Filtro
-				$table_color = "#FF69B4";
-				$table_icon = "plus";
-				$table_header = " Lista das Compras <hr>";
-				# Incluindo a 'THE TABLE'
-				include_once $GLOBALS['project_path']."/views/list_common_premiar.php";
 			break;
 
 			//Caso seja nescessário manipular usuarios, descomentar
