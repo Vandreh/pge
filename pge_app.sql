@@ -1,3 +1,6 @@
+//https://www.youtube.com/watch?v=TVW3tsMcGzA Criar table no heroku
+
+
 CREATE TABLE public.tb_profiles (
     id_profile SERIAL PRIMARY KEY,
     profile_name "varchar",
@@ -25,8 +28,7 @@ CREATE TABLE tb_clientes (
   cliente_name varchar(255) DEFAULT NULL,
   cliente_birth date DEFAULT NULL,
   cliente_created_in timestamp NULL DEFAULT current_timestamp,
-  user_id varchar(30) NOT NULL,
-  //ainda por decidir compras  int DEFAULT=0
+  user_id varchar(30) NOT NULL
 );
 
 CREATE TABLE tb_compras (
