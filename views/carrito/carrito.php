@@ -4,7 +4,7 @@
     foreach($carritoCompra as $carrito){$cart[] = $carrito['id_producto'];}}
 
     if($resultado == false) {
-        $resultado = 0;
+        $resultado[] = 0;
     }
 ?>
      
