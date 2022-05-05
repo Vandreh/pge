@@ -17,7 +17,7 @@
 <form action="" method="post" enctype="multipart/form-data">
 	<br>
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6">
 		<label> Inserir Nota Fiscal: (somente arquivos jpg)</label><br><br>
 			<input type="file" name="file" required/>
 		</div>
