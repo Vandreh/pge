@@ -7,10 +7,7 @@
 		if ($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg') {
 			die('Voce nao pode fazer upload desse tipo de arquivo');
 		}else{
-			if (!file_exists($GLOBALS['project_path']."/uploads/")) {
-				mkdir($GLOBALS['project_path']."/uploads/", 0777, true);
-			}
-			move_uploaded_file($arquivo['tmp_name'], $GLOBALS['project_path']."/uploads/".time().$arquivo['name']);
+			move_uploaded_file($arquivo['tmp_name'],"../../uploads/".time().$arquivo['name']);
 			echo 'Upload realizado com sucesso';
 		}
 
