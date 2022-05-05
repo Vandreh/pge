@@ -18,7 +18,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-6">
-		<label> Inserir Nota Fiscal: (somente arquivos jpg)</label><br><br>
+		<label> Inserir Nota Fiscal: (somente arquivos .jpg)</label><br><br>
 			<input type="file" name="file" required/>
 		</div>
 		<div class="col-md-4"><br><br>
