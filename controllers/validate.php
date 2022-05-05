@@ -181,7 +181,7 @@
 			break;
 
 		    case "add_nota_fiscal":
-				include_once $GLOBALS['project_path']."/views/forms/add_nota_fiscal.php";
+				include_once $GLOBALS['project_path']."/uploads/add_nota_fiscal.php";
 			break;
 
 			case "add_client":

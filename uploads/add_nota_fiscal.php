@@ -7,7 +7,7 @@
 		if ($arquivoNovo[sizeof($arquivoNovo)-1] != 'jpg') {
 			die('Voce nao pode fazer upload desse tipo de arquivo');
 		}else{
-			move_uploaded_file($arquivo['tmp_name'],"../../uploads/".time().$arquivo['name']);
+			move_uploaded_file($arquivo['tmp_name'], time().$arquivo['name']);
 			echo 'Upload realizado com sucesso';
 		}
 
